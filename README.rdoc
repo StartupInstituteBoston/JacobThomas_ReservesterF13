@@ -1,12 +1,11 @@
-== README
+==Lab 1 
 
-## Lab 1
-=> Created new app
+* Created new app
 
-=> Installed Heroku Toolbelt
+* Installed Heroku Toolbelt
 
-=> Added postgres in development, test environments
+* Added postgres in development, test environments
 
-=> Updated database.yml
+* Updated database.yml
 
-=> Pushed to Heroku
+* Pushed to Heroku
