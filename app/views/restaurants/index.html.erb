@@ -1,5 +1,19 @@
-<h1>This is the index page</h1>
+<h1>Restaurants</h1>
 
-<p>
-  Index me bra.
-</p>
+<table>
+  <tr>
+    <th>Restaurant</th>
+    <th>Address</th>
+    <th>Phone</th>
+    <th>Description</th>
+  </tr>
+
+  <% @restaurants.each do |rest| %>
+    <tr>
+      <td><%= rest.name %></td>
+      <td><%= rest.address %></td>
+      <td><%= rest.phone %></td>
+      <td><%= rest.description %></td>
+    </tr>
+  <% end %>
+</table>
