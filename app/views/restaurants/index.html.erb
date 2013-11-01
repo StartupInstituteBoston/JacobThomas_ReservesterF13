@@ -8,12 +8,14 @@
     <th>Description</th>
   </tr>
 
-  <% @restaurants.each do |rest| %>
+  <% @restaurants.each do |restaurant| %>
     <tr>
-      <td><%= rest.name %></td>
-      <td><%= rest.address %></td>
-      <td><%= rest.phone %></td>
-      <td><%= rest.description %></td>
+      <td><%= restaurant.name %></td>
+      <td><%= restaurant.address %></td>
+      <td><%= restaurant.phone %></td>
+      <td><%= restaurant.description %></td>
+      <td><%= link_to "Show", restaurant_path(:restaurant) %></td>
+      <td><%= link_to "Edit", edit_restaurant_path(restaurant) %></td>
     </tr>
   <% end %>
 </table>
