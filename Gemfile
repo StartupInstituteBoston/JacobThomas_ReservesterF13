@@ -11,12 +11,14 @@ group :development, :test do
   gem 'mysql2'
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'dotenv-rails'
 end
 
 group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'carrierwave'
 gem 'less-rails'
 gem 'therubyracer'
 gem 'twitter-bootstrap-rails'
