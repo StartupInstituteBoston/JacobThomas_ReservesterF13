@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>Thumbnail</th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
+        <td><%= image_tag restaurant.photo_url(:thumb).to_s %></td>
         <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
         <td><%= restaurant.description %></td>
         <td><%= restaurant.address %></td>
