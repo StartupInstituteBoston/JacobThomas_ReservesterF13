@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create 
-    @restaurant = Restaurant.new(params[:restaurant].permit(:name, :address, :phone, :description))
+    @restaurant = Restaurant.new(post_params)
     if @restaurant.save
       redirect_to @restaurant
     else
@@ -29,7 +29,7 @@ class RestaurantsController < ApplicationController
   def update
     @restaurant = Restaurant.find(params[:id])
 
-    if @restaurant.update(params[:restaurant].permit(:name, :address, :phone, :description))
+    if @restaurant.update(post_params)
       redirect_to @restaurant
     else
       render 'edit'
@@ -45,7 +45,7 @@ class RestaurantsController < ApplicationController
 
     private 
       def post_params
-        params.require(:restaurant).permit(:name, :address, :phone, :description)
+        params.require(:restaurant).permit(:name, :address, :phone, :description, :photo)
       end
 
 end

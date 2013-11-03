@@ -18,6 +18,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'rmagick'
 gem 'carrierwave'
 gem 'less-rails'
 gem 'therubyracer'

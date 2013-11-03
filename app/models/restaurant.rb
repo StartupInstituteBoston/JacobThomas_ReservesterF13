@@ -3,4 +3,6 @@ class Restaurant < ActiveRecord::Base
 
   validates :description, presence: true,
               length: { minimum: 5 }
+
+  mount_uploader :photo, PhotoUploader
 end
