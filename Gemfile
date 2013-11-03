@@ -18,6 +18,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'unf'
 gem 'fog'
 gem 'rmagick'
 gem 'carrierwave'
@@ -32,6 +33,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
+
+#configitron
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
