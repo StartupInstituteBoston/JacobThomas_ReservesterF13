@@ -19,7 +19,9 @@ group :doc do
 end
 
 
+gem 'jquery-turbolinks'
 gem 'geocoder'
+gem 'gmaps4rails'
 gem 'unf'
 gem 'fog'
 gem 'rmagick'

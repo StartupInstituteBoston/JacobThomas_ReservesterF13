@@ -65,6 +65,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     geocoder (1.1.8)
+    gmaps4rails (2.0.3)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -73,6 +74,9 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.0.1)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.1)
     less (2.4.0)
       commonjs (~> 0.2.7)
@@ -175,8 +179,10 @@ DEPENDENCIES
   dotenv-rails
   fog
   geocoder
+  gmaps4rails
   jbuilder (~> 1.2)
   jquery-rails
+  jquery-turbolinks
   less-rails
   mysql2
   pg
