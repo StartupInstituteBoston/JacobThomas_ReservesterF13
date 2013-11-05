@@ -7,8 +7,6 @@ class Restaurant < ActiveRecord::Base
 
   mount_uploader :photo, PhotoUploader
 
-  mount_uploader :menu, MenuUploader
-
   geocoded_by :address
   after_validation :geocode 
 end
