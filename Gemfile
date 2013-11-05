@@ -18,6 +18,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+
+gem 'geocoder'
 gem 'unf'
 gem 'fog'
 gem 'rmagick'
