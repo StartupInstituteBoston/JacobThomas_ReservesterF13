@@ -12,6 +12,8 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'dotenv-rails'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :doc do

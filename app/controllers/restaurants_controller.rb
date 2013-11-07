@@ -2,10 +2,6 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
-    @hash = Gmaps4rails.build_markers(@restaurants) do |restaurant, marker|
-      marker.lat restaurant.latitude
-      marker.lng restaurant.longitude
-    end
   end
 
   def show
@@ -54,7 +50,7 @@ class RestaurantsController < ApplicationController
     private 
       def post_params
         params.require(:restaurant).permit(:name, :address, :phone, 
-                      :description, :photo)
+                      :description, :photo, :menu)
       end
 
 end
