@@ -21,6 +21,7 @@ group :doc do
 end
 
 
+gem 'devise'
 gem 'jquery-turbolinks'
 gem 'geocoder'
 gem 'gmaps4rails'
