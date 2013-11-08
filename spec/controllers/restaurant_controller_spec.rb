@@ -41,17 +41,31 @@ describe RestaurantsController do
   end
 
   describe "create" do 
-    it "should be successful if passed " do 
-      temp_restaurant = FactoryGirl.build(:restaurant)
-
-      post :create, restaurant: temp_restaurant.attributes
-      # post :create, restaurant: {
-      #   name: "thing"
-      # }
-      response.should be_redirect
-      Restaurant.first.should be_valid
+    context "with valid attributes" do
+      it "should save new contact in database" do 
+        temp_restaurant = FactoryGirl.build(:restaurant)
+        post :create, restaurant: temp_restaurant.attributes
+        Restaurant.first.should be_valid
+      end
     end
 
-
+    context "with invalid attributes" do 
+      it "does not save new contact in database" do 
+      end
+    end
   end
+
+  describe "edit" do 
+    let(:restaurant) { FactoryGirl.create(:restaurant) }
+
+    it "should render the edit template for given restaurant" do 
+      get :edit, id: restaurant.id
+      expect(assigns(:restaurant)).to eq restaurant
+    end
+  end
+
+  #NEED TO TEST UPDATE METHOD
+
+  #NEED TO TEST DESTROY METHOD 
+  
 end
