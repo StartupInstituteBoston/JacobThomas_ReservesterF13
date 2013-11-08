@@ -34,6 +34,7 @@ GEM
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     builder (3.1.4)
+    callsite (0.0.11)
     capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -53,6 +54,7 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     commonjs (0.2.7)
+    database_cleaner (1.2.0)
     debug_inspector (0.0.2)
     devise (3.2.0)
       bcrypt-ruby (~> 3.0)
@@ -60,13 +62,18 @@ GEM
       railties (>= 3.2.6, < 5)
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
-    diff-lcs (1.2.4)
+    diff-lcs (1.2.5)
     dotenv (0.9.0)
     dotenv-rails (0.9.0)
       dotenv (= 0.9.0)
     erubis (2.7.0)
     excon (0.28.0)
     execjs (2.0.2)
+    factory_girl (4.3.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.3.0)
+      factory_girl (~> 4.3.0)
+      railties (>= 3.0.0)
     fog (1.18.0)
       builder
       excon (~> 0.28.0)
@@ -79,7 +86,7 @@ GEM
       ruby-hmac
     formatador (0.2.4)
     geocoder (1.1.8)
-    gmaps4rails (2.0.3)
+    gmaps4rails (2.0.4)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -101,11 +108,15 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    meta_request (0.2.8)
+      callsite
+      rack-contrib
+      railties
     mime-types (1.25)
     mini_portile (0.5.2)
     minitest (4.7.5)
     multi_json (1.8.2)
-    mysql2 (0.3.13)
+    mysql2 (0.3.14)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.7.0)
@@ -115,6 +126,8 @@ GEM
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.0.0)
@@ -140,17 +153,21 @@ GEM
       json (~> 1.4)
     ref (1.0.5)
     rmagick (2.13.2)
-    rspec-core (2.13.1)
-    rspec-expectations (2.13.0)
+    rspec (2.14.1)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
+    rspec-core (2.14.7)
+    rspec-expectations (2.14.4)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.13.1)
-    rspec-rails (2.13.1)
+    rspec-mocks (2.14.4)
+    rspec-rails (2.14.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       railties (>= 3.0)
-      rspec-core (~> 2.13.0)
-      rspec-expectations (~> 2.13.0)
-      rspec-mocks (~> 2.13.0)
+      rspec-core (~> 2.14.0)
+      rspec-expectations (~> 2.14.0)
+      rspec-mocks (~> 2.14.0)
     ruby-hmac (0.4.0)
     sass (3.2.12)
     sass-rails (4.0.1)
@@ -160,6 +177,10 @@ GEM
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
+    simplecov (0.7.1)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.7.1)
+    simplecov-html (0.7.1)
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -207,8 +228,10 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 4.0.0)
+  database_cleaner
   devise
   dotenv-rails
+  factory_girl_rails
   fog
   geocoder
   gmaps4rails
@@ -216,14 +239,17 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   less-rails
+  meta_request
   mysql2
   pg
   rails (= 4.0.0)
   rails_12factor
   rmagick
+  rspec
   rspec-rails
   sass-rails (~> 4.0.0)
   sdoc
+  simplecov
   therubyracer
   turbolinks
   twitter-bootstrap-rails
