@@ -28,7 +28,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-
+gem "parsley-rails"
 gem 'devise'
 gem 'jquery-turbolinks'
 gem 'geocoder'

@@ -6,6 +6,6 @@ class Owner < ActiveRecord::Base
 
   has_many :restaurants, dependent: :destroy
 
-  validates :name, presence: :true
+  validates :name, presence: :true, length: { minimum: 5 }
   validates :email, presence: :true
 end
