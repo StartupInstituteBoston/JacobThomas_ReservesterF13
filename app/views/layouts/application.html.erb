@@ -21,8 +21,8 @@
         <div class="nav-collapse">
           <ul class="nav">
             <li><%= link_to "Restaurants", restaurants_path %></li>
-            <li><%= link_to "New Restaurant", new_restaurant_path %></li>
             <% if owner_signed_in? %>
+              <li><%= link_to "New Restaurant", new_restaurant_path %></li>
               <li><%= link_to "Sign Out", destroy_owner_session_path, :method => :delete %></li>
             <% else %>
               <li><%= link_to "Sign In", new_owner_session_path %></li>

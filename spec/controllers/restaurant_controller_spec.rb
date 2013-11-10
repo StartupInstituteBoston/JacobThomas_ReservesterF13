@@ -50,7 +50,8 @@ describe RestaurantsController do
     end
 
     context "with invalid attributes" do 
-      it "does not save new contact in database" do 
+      it "does not save new contact in database" do
+
       end
     end
   end

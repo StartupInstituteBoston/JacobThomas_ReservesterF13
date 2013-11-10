@@ -1,6 +1,7 @@
 class RestaurantsController < ApplicationController
 
-  before_filter :authenticate_owner!
+  before_filter :authenticate_owner!, :only => [:new, :create]
+  before_filter :right_owner, :only => [:edit, :update, :destroy]
 
   def index
     @restaurants = Restaurant.all
@@ -15,17 +16,16 @@ class RestaurantsController < ApplicationController
   end
 
   def new
-    @restaurant = Restaurant.new
+      @restaurant = Restaurant.new
   end
 
   def create 
-    @restaurant = Restaurant.new(post_params)
+    @restaurant = current_owner.restaurants.new(post_params)
     if @restaurant.save
       redirect_to @restaurant
     else
       render 'new'
     end
-
   end
 
   def edit
@@ -34,7 +34,6 @@ class RestaurantsController < ApplicationController
 
   def update
     @restaurant = Restaurant.find(params[:id])
-
     if @restaurant.update(post_params)
       redirect_to @restaurant
     else
@@ -45,7 +44,6 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy 
-
     redirect_to restaurants_path
   end 
 
@@ -55,4 +53,14 @@ class RestaurantsController < ApplicationController
                       :description, :photo, :menu)
       end
 
+      def right_owner
+        @restaurant = Restaurant.find(params[:id])
+        if owner_signed_in?
+          return true
+        else
+          redirect_to restaurants_path,
+          :notice => 'You must be logged in'
+          return false
+        end
+      end
 end
