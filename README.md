@@ -19,9 +19,20 @@
 
 * Created Restaurant resource with :name, :address,  :phone, :description
 
-* Created restaurant controller actions for index, show, new, create, edit, update, destroy
+* Installed Twitter Bootstrap
 
-* Created views for Index, Show, New, Edit
+* Installed Carrierwave and configured photo uploader for S3, changed views accordingly
 
-##Need to set routes and edit views next.
+* Installed Geocoder and used Gmaps4Rails to display restaurant location 
 
+* Configured carrierwave for menu uploader to S3
+
+* Started testing controllers
+
+==Lab 3 
+
+* Installed Devise and configured owner login
+
+* Owners class has_many restaurants, restaurants class belongs_to owners
+
+* Data validations for owners and restaurants
