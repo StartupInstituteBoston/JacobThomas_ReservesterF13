@@ -30,7 +30,7 @@ end
 
 gem "parsley-rails"
 gem 'devise'
-gem 'jquery-turbolinks'
+#gem 'jquery-turbolinks'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'unf'
@@ -45,7 +45,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-gem 'turbolinks'
+#gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 
