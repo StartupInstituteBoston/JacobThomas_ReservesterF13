@@ -2,28 +2,28 @@
   <div class="control-group">
     <%= f.label :name, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :name, :class => 'text_field' %>
+      <%= f.text_field :name, :class => 'text_field', :"data-required" => true, :"data-required-message" => "Enter a friggin name" %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :description, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :description, :class => 'text_field', :"data-required" => true %>
+      <%= f.text_field :description, :class => 'text_field', :"data-required" => true, :"data-required-message" => "Enter a friggin description of your friggin restaurant" %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :address, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :address, :class => 'text_field' %>
+      <%= f.text_field :address, :class => 'text_field', :"data-required" => true, :"data-required-message" => "Enter a friggin address frigger" %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :phone, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :phone, :class => 'text_field', :"data-type"="phone" %>
+      <%= f.text_field :phone, :class => 'text_field', :"data-required" => true, :"data-type" => "phone", :"data-required-message" => "Cuz I just want your number, giiiiirl" %>
     </div>
   </div>
 
