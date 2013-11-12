@@ -19,6 +19,7 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
 
+  config.include FactoryGirl::Syntax::Methods
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller
   # ## Mock Framework
@@ -46,15 +47,6 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  config.order = "random" 
 
-  #Before each test runs, this line starts database cleaner.
-  config.before :each do 
-    DatabaseCleaner.start 
-  end
-
-  #After tests run, database is cleaned. 
-  config.after :each do 
-    DatabaseCleaner.clean 
-  end
 end

@@ -1,72 +1,91 @@
 require 'spec_helper' 
 
 describe RestaurantsController do 
-  login_owner
-
-  describe "#show" do 
-    #Sets variable :restaurant to equal what we just created in the factory
-    let(:owner) { FactoryGirl.create(:owner) }
-    let(:restaurant) { FactoryGirl.create(:restaurant) }
-
-    it "should render show template for given restaurant" do
-      get :show, id: restaurant.id 
-      expect(assigns(:restaurant)).to eq restaurant 
-      expect(response).to render_template("show")
-    end
-  end
+  let(:restaurant) { FactoryGirl.create(:restaurant) }
+  let(:owner) { FactoryGirl.create :owner }
 
   describe "#index" do 
     it "should return HTTP 200" do 
       get :index 
       expect(response).to be_success
-      expect(response.status).to eq(200)
+      response.status.should == 200
     end 
     
     it "should render the index template" do 
       get :index 
-      expect(response).to render_template("index")
+      response.should render_template("index")
+    end
+
+    it "should assign restaurant" do
+      restaurant = Restaurant.create
+      get :index
+      assigns(:restaurant).should eq(Restaurant.first)
+    end
+  end
+
+  describe "#show" do 
+    it "should render show template for given restaurant" do
+      get :show, id: restaurant.id  
+      response.should render_template :show
     end
   end
 
   describe "new" do 
-    it "should return HTTP 200" do 
-      get :new 
-      expect(response).to be_success 
+
+    context "if signed in" do 
+      before { sign_in owner }
+
+      it "should return HTTP 200" do 
+        get :new 
+        response.status.should == 200 
+      end
+
+      it "should render the new template" do 
+        get :new 
+        response.should render_template("new")
+      end
+
+      it "should save new restaurant" do 
+      end
     end
 
-    it "should render the new template" do 
-      get :new 
-      expect(response).to render_template("new")
+    context "if not signed in" do 
+      before { sign_out owner }
+      it "should return HTTP 302" do 
+        get :new 
+        response.status.should == 302
+      end
+
+      it "should render sign in template" do 
+        get :new 
+        response.should redirect_to(new_owner_session_path)
+      end
     end
   end
+  
 
   describe "create" do 
+    before { sign_in owner }
     context "with valid attributes" do
       it "should save new contact in database" do 
-        temp_restaurant = FactoryGirl.build(:restaurant)
-        post :create, restaurant: temp_restaurant.attributes
+        post :create, restaurant: restaurant.attributes
         Restaurant.first.should be_valid
       end
     end
 
-    context "with invalid attributes" do 
-      it "does not save new contact in database" do
-
+    context "with invalid attributes" do  
+      it "should redirect to new" do 
+        post :create, restaurant: restaurant.attributes
+        post :create, restaurant: restaurant.attributes.dup
+        response.should render_template :new 
       end
     end
   end
 
   describe "edit" do 
-    let(:restaurant) { FactoryGirl.create(:restaurant) }
-
     it "should render the edit template for given restaurant" do 
       get :edit, id: restaurant.id
       expect(assigns(:restaurant)).to eq restaurant
     end
   end
-
-  #NEED TO TEST UPDATE METHOD
-
-  #NEED TO TEST DESTROY METHOD 
-  
 end

@@ -1,6 +1,9 @@
 FactoryGirl.define do 
   factory :owner do 
-    sequence(:email) { |n| "text#{n}@text.com" }
-    password "foobarrrrrrrr"
+    name "The best owner"
+    email "you@me.com"
+    password "foobarfoo"
+    password_confirmation "foobarfoo"
+    
   end
 end
