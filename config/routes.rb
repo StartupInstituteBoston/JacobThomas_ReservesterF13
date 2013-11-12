@@ -1,6 +1,10 @@
 Reservester::Application.routes.draw do
-  devise_for :owners
+
   root to: "welcome#index"
 
+  devise_for :owners
+
   resources :restaurants
+
+  resources :reservations
 end

@@ -17,7 +17,6 @@ describe RestaurantsController do
     end
 
     it "should assign restaurant" do
-      restaurant = Restaurant.create
       get :index
       assigns(:restaurant).should eq(Restaurant.first)
     end
@@ -77,7 +76,7 @@ describe RestaurantsController do
       it "should redirect to new" do 
         post :create, restaurant: restaurant.attributes
         post :create, restaurant: restaurant.attributes.dup
-        response.should render_template :new 
+        response.should_not be_valid
       end
     end
   end

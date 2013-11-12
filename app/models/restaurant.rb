@@ -1,8 +1,10 @@
 class Restaurant < ActiveRecord::Base
+  
+  belongs_to :owner 
+  has_many :reservations, dependent: :destroy
 
   validates :name, presence: true
   validates :owner, presence: true
-
   validates :description, presence: true,
               uniqueness: true,
               length: { minimum: 5 }
@@ -13,5 +15,4 @@ class Restaurant < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode 
 
-  belongs_to :owner 
 end
