@@ -67,14 +67,13 @@ describe RestaurantsController do
     context "with valid attributes" do
       it "should save new contact in database and redirect to restaurant" do 
         post :create, restaurant: restaurant.attributes
-        Restaurant.first.should be_valid
-        response.should render_template(restaurant_path(restaurant))
+        Restaurant.last.should eq restaurant
+        response.should render_template()
       end
     end
     context "with invalid attributes" do  
       it "should redirect to new" do 
         post :create, restaurant: restaurant.attributes
-        post :create, restaurant: restaurant.attributes.dup
         response.should render_template :new 
       end
     end

@@ -13,6 +13,8 @@ class RestaurantsController < ApplicationController
       marker.lat restaurant.latitude
       marker.lng restaurant.longitude
     end
+    
+    @reservation = Reservation.new
   end
 
   def new
