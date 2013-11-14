@@ -15,12 +15,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(post_params)
-    if @reservation.save
-      redirect_to @reservation
-    else
-      render 'restaurants' 
-    end
+    @reservation = Reservation.create(reservation_params)
   end
 
   def edit
@@ -34,8 +29,8 @@ class ReservationsController < ApplicationController
   end
 
   private
-    def post_params 
-      params.require(:reservation).permit(:email, :datetime, :message)
+    def reservation_params 
+      params.require(:reservation).permit(:email, :datetime, :message, :restaurant_id)
     end
   
 end

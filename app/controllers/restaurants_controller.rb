@@ -13,7 +13,6 @@ class RestaurantsController < ApplicationController
       marker.lat restaurant.latitude
       marker.lng restaurant.longitude
     end
-    
     @reservation = Reservation.new
   end
 
@@ -22,7 +21,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create 
-    @restaurant = current_owner.restaurants.new(post_params)
+    @restaurant = current_owner.restaurants.new(restaurant_params)
     if @restaurant.save
       redirect_to @restaurant
     else
@@ -50,7 +49,7 @@ class RestaurantsController < ApplicationController
   end 
 
     private 
-      def post_params
+      def restaurant_params
         params.require(:restaurant).permit(:name, :address, :phone, 
                       :description, :photo, :menu)
       end
