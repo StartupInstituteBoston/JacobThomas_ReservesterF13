@@ -1,23 +1,22 @@
 class RestaurantsController < ApplicationController
 
   before_filter :authenticate_owner!, :only => [:new, :create]
-  before_filter :right_owner, :only => [:edit, :update, :destroy]
-
+  before_filter :set_restaurant, :except => [:index, :new, :create]
+  
   def index
     @restaurants = Restaurant.all
   end
 
   def show
-    @restaurant = Restaurant.find(params[:id])
     @hash = Gmaps4rails.build_markers(@restaurant) do |restaurant, marker|
       marker.lat restaurant.latitude
       marker.lng restaurant.longitude
     end
-    @reservation = Reservation.new
   end
 
   def new
       @restaurant = Restaurant.new
+      @restaurant.reservations.build
   end
 
   def create 
@@ -30,12 +29,10 @@ class RestaurantsController < ApplicationController
   end
 
   def edit
-    @restaurant = Restaurant.find(params[:id])
   end
 
   def update
-    @restaurant = Restaurant.find(params[:id])
-    if @restaurant.update(post_params)
+    if @restaurant.update(restaurant_params)
       redirect_to @restaurant
     else
       render 'edit'
@@ -43,25 +40,20 @@ class RestaurantsController < ApplicationController
   end
 
   def destroy
-    @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy 
     redirect_to restaurants_path
   end 
 
-    private 
-      def restaurant_params
-        params.require(:restaurant).permit(:name, :address, :phone, 
-                      :description, :photo, :menu)
-      end
 
-      def right_owner
-        @restaurant = Restaurant.find(params[:id])
-        if owner_signed_in?
-          return true
-        else
-          redirect_to restaurants_path,
-          :notice => 'You must be logged in'
-          return false
-        end
-      end
+
+  private 
+
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :address, :phone, 
+                  :description, :photo, :menu, :reservation)
+  end
+
+  def set_restaurant 
+    @restaurant = Restaurant.find(params[:id])
+  end
 end

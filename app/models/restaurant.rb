@@ -2,6 +2,7 @@ class Restaurant < ActiveRecord::Base
   
   belongs_to :owner 
   has_many :reservations, dependent: :destroy
+  accepts_nested_attributes_for :reservations, :reject_if => lambda { |a| a[:content].blank? }
 
   validates :name, presence: true
   validates :owner, presence: true

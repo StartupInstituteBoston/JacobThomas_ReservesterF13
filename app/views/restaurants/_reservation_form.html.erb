@@ -1,0 +1,39 @@
+<%= form_for @restaurant, :html => { :"data-validate" => 'parsley', :class => 'form-horizontal', :multipart => true } do |f| %>
+  <h1>
+    Reserverate it.
+  </h1>
+
+  <%= f.fields_for :reservation, :html => { :"data-validate" => 'parsley', :class => 'form-horizontal', :multipart => true } do |builder| %>
+  <br />
+    <div class="control-group">
+      <%= builder.label :email, :class => 'control-label' %>
+      <div class="controls">
+        <%= builder.email_field :email, :class => 'email_field', :"data-required" => true %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= builder.label :datetime, :class => 'datetime' %>
+      <div class="controls">
+        <%= builder.datetime_field :datetime, :class => 'datetime_field', :"data-required" => true %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= builder.label :message, :class => 'text_field' %>
+      <div class="controls">
+        <%= builder.text_area :message, :class => 'text_area', :"data-required" => true %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= builder.hidden_field :restaurant_id, :value => @restaurant.id %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-actions">
+      <%= f.submit "Submit reserveration", :class => 'btn btn-primary btn-large' %>     
+    </div>
+<% end %>
