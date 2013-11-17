@@ -4,7 +4,7 @@
   </h1>
 
   <%= f.fields_for :reservation, :html => { :"data-validate" => 'parsley', :class => 'form-horizontal', :multipart => true } do |builder| %>
-  <br />
+
     <div class="control-group">
       <%= builder.label :email, :class => 'control-label' %>
       <div class="controls">
@@ -13,14 +13,14 @@
     </div>
 
     <div class="control-group">
-      <%= builder.label :datetime, :class => 'datetime' %>
+      <%= builder.label :datetime, :class => 'control-label' %>
       <div class="controls">
         <%= builder.datetime_field :datetime, :class => 'datetime_field', :"data-required" => true %>
       </div>
     </div>
 
     <div class="control-group">
-      <%= builder.label :message, :class => 'text_field' %>
+      <%= builder.label :message, :class => 'control-label' %>
       <div class="controls">
         <%= builder.text_area :message, :class => 'text_area', :"data-required" => true %>
       </div>
