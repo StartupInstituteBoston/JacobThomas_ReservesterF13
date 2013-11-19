@@ -4,7 +4,7 @@ Reservester::Application.routes.draw do
 
   devise_for :owners
 
-  resources :restaurants
-
-  resources :reservations
+  resources :restaurants do 
+    resources :reservations 
+  end
 end

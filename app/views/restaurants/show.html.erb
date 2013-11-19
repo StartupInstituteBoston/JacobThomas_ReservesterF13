@@ -38,10 +38,11 @@
   </div>
 <% end %>
 
-<%= render :partial => 'reservation_form' %>
-
-
-
+<% if owner_signed_in? && current_owner.id == @restaurant.owner_id %>
+  <%= render :partial => 'reservation_show' %>
+<% else %>
+  <%= render :partial => 'reservation_form' %>
+<% end %>
 
 
 

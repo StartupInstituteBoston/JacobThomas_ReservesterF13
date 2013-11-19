@@ -1,0 +1,23 @@
+<h1>
+  Reserverations
+</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Date/ Time</th>
+      <th>Email Address</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @restaurant.reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.datetime %></td>
+        <td><%= reservation.email %></td>
+        <td><%= reservation.message %></td>
+        <td><%= link_to "Mark as confirmed", restaurant_reservation_path(reservation, @restaurant), :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
