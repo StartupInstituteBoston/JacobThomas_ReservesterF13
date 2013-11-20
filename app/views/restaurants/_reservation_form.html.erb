@@ -1,4 +1,4 @@
-<%= form_for [ @restaurant, @reservation ], :html => { :"data_validate" => 'parsley', :class => 'form-horizontal', :multipart => true } do |f| %>
+<%= form_for [ @restaurant, @reservation ], :html => { :"data-validate" => 'parsley', :class => 'form-horizontal', :multipart => true } do |f| %>
 
  <h1>
     Reserverate it. 
@@ -14,7 +14,7 @@
   <div class="control-group">
     <%= f.label :datetime, :class => 'control-label' %>
     <div class="controls">
-      <%= f.datetime_field :datetime, :class => 'datetime_field', :"data-required" => true %>
+      <%= f.datetime_field :datetime, :class => 'datetime_field', :"data-required" => true, :"data-required-message" => "Enter a proper date and time" %>
     </div>
   </div>
 
@@ -32,7 +32,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.submit "Submit reserveration", :class => 'btn btn-primary btn-large' %>     
+    <%= f.submit "Submit reserveration", :class => 'btn btn-primary' %>     
   </div>
 
 <% end %>

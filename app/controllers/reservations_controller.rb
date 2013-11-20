@@ -15,6 +15,9 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = Reservation.create(reservation_params)
+    @restaurant = Restaurant.find(@reservation.restaurant_id)
+    @owner = Owner.find(@restaurant.owner_id)
+    Notifier.send_reservation_email(@owner).deliver
     redirect_to restaurants_path
     #flash sucess message 
   end
@@ -38,6 +41,5 @@ class ReservationsController < ApplicationController
   def set_reservation
     @reservation = Reservation.find(params[:id])
   end
-
   
 end

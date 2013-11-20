@@ -12,6 +12,7 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'dotenv-rails'
+  gem 'mailcatcher'
 end
 
 group :test do 
@@ -30,6 +31,7 @@ end
 
 gem "parsley-rails"
 gem 'devise'
+#gem 'turbolinks'
 #gem 'jquery-turbolinks'
 gem 'geocoder'
 gem 'gmaps4rails'
@@ -45,7 +47,6 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
-#gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 
