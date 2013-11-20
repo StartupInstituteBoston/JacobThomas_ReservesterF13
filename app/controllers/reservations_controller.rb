@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.create(reservation_params)
     @restaurant = Restaurant.find(@reservation.restaurant_id)
     @owner = Owner.find(@restaurant.owner_id)
-    Notifier.send_reservation_email(@owner).deliver
+    #Notifier.send_reservation_email(@owner, @reservation).deliver
     redirect_to restaurants_path
     #flash sucess message 
   end
