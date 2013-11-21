@@ -14,12 +14,15 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.create(reservation_params)
-    @restaurant = Restaurant.find(@reservation.restaurant_id)
-    @owner = Owner.find(@restaurant.owner_id)
-    #Notifier.send_reservation_email(@owner, @reservation).deliver
-    redirect_to restaurants_path
-    #flash sucess message 
+    @reservation = Reservation.new(reservation_params)
+    if verify_recaptcha() && @reservation.save
+      @restaurant = Restaurant.find(@reservation.restaurant_id)
+      @owner = Owner.find(@restaurant.owner_id)
+      #Notifier.send_reservation_email(@owner, @reservation).deliver
+      redirect_to restaurants_path
+    else
+      redirect_to restaurants_path
+    end
   end
 
   def edit
@@ -41,5 +44,4 @@ class ReservationsController < ApplicationController
   def set_reservation
     @reservation = Reservation.find(params[:id])
   end
-  
 end
