@@ -1,1 +1,23 @@
 <h1>The one dashboard to rule them all</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>Phone</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @restaurants.each do |restaurant| %>
+    <tr>
+      <td><%= link_to restaurant.name, restaurant_path(restaurant) %></td>
+      <td><%= restaurant.address %></td>
+      <td><%= restaurant.phone %></td>
+      <td><%= restaurant.description %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
