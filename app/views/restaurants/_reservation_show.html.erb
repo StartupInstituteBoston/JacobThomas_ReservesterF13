@@ -17,7 +17,7 @@
         <td><%= reservation.datetime %></td>
         <td><%= reservation.email %></td>
         <td><%= reservation.message %></td>
-        <td><%= link_to "Mark as confirmed", restaurant_reservation_path(reservation, @restaurant), :method => :delete %></td>
+        <td><%= link_to "Mark as confirmed", [@restaurant, reservation], :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>
