@@ -29,11 +29,25 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+#Background processes 
+gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem 'redis-rails'
+gem 'resque_mailer'
+
+#Recaptcha validations
 gem "recaptcha", :require => "recaptcha/rails"
+
+#Client-side validation
 gem "parsley-rails"
+
+#AUTH
 gem 'devise'
+
+#Maps
 gem 'geocoder'
 gem 'gmaps4rails'
+
+
 gem 'unf'
 gem 'fog'
 gem 'rmagick'
