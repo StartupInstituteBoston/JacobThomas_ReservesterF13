@@ -1,6 +1,30 @@
 <%- model_class = Restaurant -%>
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
+
+<dl class="dl-horizontal">
+  <dt><strong>Owner:</strong></dt>
+  <dd><%= Owner.find(@restaurant.owner_id).name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @restaurant.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @restaurant.description %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
+  <dd><%= @restaurant.address %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
+  <dd><%= @restaurant.phone %></dd>
+  <% if @restaurant.categories != [] %>
+    <% if @restaurant.categories.length == 1 %>
+      <dt><strong>Category:</strong></dt>
+    <% else %>
+     <dt><strong>Categories:</strong></dt>
+    <% end %>
+    <% @restaurant.categories.each do |category| %>
+    <dd><%= category.name %></dd>
+    <% end %>
+  <% end %>
+</dl>
+
 </div>
 <% if owner_signed_in? %>
   <div class="form-actions">
@@ -15,18 +39,7 @@
                 :class => 'btn btn-danger' %>
   </div>
 <% end %>
-<dl class="dl-horizontal">
-  <dt><strong>Owner:</strong></dt>
-  <dd><%= Owner.find(@restaurant.owner_id).name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
-  <dd><%= @restaurant.name %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
-  <dd><%= @restaurant.description %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:address) %>:</strong></dt>
-  <dd><%= @restaurant.address %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
-  <dd><%= @restaurant.phone %></dd>
-</dl>
+
 <p>
   <img class="img-rounded">
     <%= image_tag @restaurant.photo_url(:masthead).to_s %>

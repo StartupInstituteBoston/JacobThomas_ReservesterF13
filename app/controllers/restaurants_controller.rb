@@ -13,7 +13,7 @@ class RestaurantsController < ApplicationController
       marker.lng restaurant.longitude
     end
     @reservation = Reservation.new
-    raise 'error'
+    #raise 'error'
   end
 
   def new
@@ -34,6 +34,7 @@ class RestaurantsController < ApplicationController
   end
 
   def update
+    params[:restaurant][:category_ids] ||= []
     if @restaurant.update(restaurant_params)
       redirect_to @restaurant
     else
