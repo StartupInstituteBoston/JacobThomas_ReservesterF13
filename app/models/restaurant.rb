@@ -3,6 +3,8 @@
   belongs_to :owner 
   has_many :reservations, dependent: :destroy
   accepts_nested_attributes_for :reservations, :reject_if => lambda { |a| a[:content].blank? }
+  has_and_belongs_to_many :categories 
+  accepts_nested_attributes_for :categories 
 
   validates :name, presence: true
   validates :owner, presence: true

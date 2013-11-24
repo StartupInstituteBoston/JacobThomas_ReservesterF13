@@ -42,6 +42,17 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <% for category in Category.find(:all) %>
+    <div class="controls checkbox inline" >
+      <%= check_box_tag category.id %>
+      <%= category.name %>
+    </div>
+    <% end %>
+  </div>
+
+
+
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),

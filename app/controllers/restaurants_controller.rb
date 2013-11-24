@@ -13,6 +13,7 @@ class RestaurantsController < ApplicationController
       marker.lng restaurant.longitude
     end
     @reservation = Reservation.new
+    raise 'error'
   end
 
   def new
@@ -51,7 +52,7 @@ class RestaurantsController < ApplicationController
 
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :phone, 
-                  :description, :photo, :menu, :reservation)
+                  :description, :photo, :menu, :reservation, :category_ids => [] )
   end
 
   def set_restaurant 
