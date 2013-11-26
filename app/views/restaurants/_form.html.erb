@@ -51,7 +51,12 @@
     <% end %>
   </div>
 
-
+  <div class="control-group">
+    <%= f.label :category_ids, :class=> 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :category_ids, :class=>'text_field' %>
+    </div>
+  </div>
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>

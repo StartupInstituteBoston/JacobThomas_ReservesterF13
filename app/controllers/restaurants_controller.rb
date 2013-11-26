@@ -13,7 +13,6 @@ class RestaurantsController < ApplicationController
       marker.lng restaurant.longitude
     end
     @reservation = Reservation.new
-    #raise 'error'
   end
 
   def new
@@ -46,7 +45,6 @@ class RestaurantsController < ApplicationController
     @restaurant.destroy 
     redirect_to restaurants_path
   end 
-
 
 
   private 
