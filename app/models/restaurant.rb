@@ -18,4 +18,9 @@
   geocoded_by :address
   after_validation :geocode 
 
+
+  def category_tokens(ids)
+    self.category_ids = ids.split(",")
+  end
+
 end

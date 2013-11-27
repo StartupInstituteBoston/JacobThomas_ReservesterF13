@@ -10,6 +10,7 @@
       <th><%= model_class.human_attribute_name(:description) %></th>
       <th><%= model_class.human_attribute_name(:address) %></th>
       <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:category) %></th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +21,7 @@
         <td><%= restaurant.description %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone %></td>
+        <td><%= restaurant.categories.join(',') %></td>
         <td>
           <% if owner_signed_in? && current_owner.id == restaurant.owner_id %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),

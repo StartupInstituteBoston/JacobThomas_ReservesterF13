@@ -42,20 +42,13 @@
     </div>
   </div>
 
-  <div class="control-group">
+    <div class="control-group">
     <% for category in Category.find(:all) %>
     <div class="controls checkbox inline" >
       <%= check_box_tag "restaurant[category_ids][]", category.id, @restaurant.categories.include?(category)  %>
       <%= category.name %>
     </div>
     <% end %>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :category_ids, :class=> 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :category_ids, :class=>'text_field' %>
-    </div>
   </div>
 
   <div class="form-actions">
