@@ -21,7 +21,10 @@
         <td><%= restaurant.description %></td>
         <td><%= restaurant.address %></td>
         <td><%= restaurant.phone %></td>
-        <td><%= restaurant.categories.join(',') %></td>
+        <td>
+        <% restaurant.categories.each do |category| %>
+        <%= link_to category.name, category_path(category) %>
+        <% end %><br /></td>
         <td>
           <% if owner_signed_in? && current_owner.id == restaurant.owner_id %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),

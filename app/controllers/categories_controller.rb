@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show 
+    @restaurants = Restaurant.where(:categories => {:id => params[:id]}).includes(:categories).all
   end 
 
 

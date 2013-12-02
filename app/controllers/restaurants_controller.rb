@@ -5,7 +5,6 @@ class RestaurantsController < ApplicationController
   
   def index
     @restaurants = Restaurant.all
-    raise 'error'
   end
 
   def show
