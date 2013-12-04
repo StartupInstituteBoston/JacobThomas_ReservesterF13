@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-  before_filter :authenticate_owner!, :only => [:new, :create]
+  before_filter :authenticate_user!, :only => [:new, :create]
   before_filter :set_restaurant, :except => [:index, :new, :create]
   
   def index
@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
   end
 
   def create 
-    @restaurant = current_owner.restaurants.new(restaurant_params)
+    @restaurant = current_user.restaurants.new(restaurant_params)
     if @restaurant.save
       redirect_to @restaurant
     else

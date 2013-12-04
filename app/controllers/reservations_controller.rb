@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     if verify_recaptcha() && @reservation.save
       @restaurant = Restaurant.find(@reservation.restaurant_id)
-      @owner = Owner.find(@restaurant.user_id)
+      @user = User.find(@restaurant.user_id)
       #Notifier.send_reservation_email(@owner, @reservation).deliver
       redirect_to restaurants_path
     else

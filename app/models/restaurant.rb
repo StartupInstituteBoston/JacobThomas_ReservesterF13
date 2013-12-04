@@ -7,7 +7,7 @@
   accepts_nested_attributes_for :categories 
 
   validates :name, presence: true
-  validates :owner, presence: true
+  validates :user, presence: true
   validates :description, presence: true,
               uniqueness: true,
               length: { minimum: 5 }
