@@ -26,7 +26,7 @@
 </dl>
 
 </div>
-<% if user_signed_in? %>
+<% if owner? %>
   <div class="form-actions">
     <%= link_to t('.back', :default => t("helpers.links.back")),
                 restaurants_path, :class => 'btn'  %>
@@ -50,7 +50,7 @@
 </div>
 
 
-<% if user_signed_in? && current_user.id == @restaurant.user_id %>
+<% if owner? %>
   <%= render :partial => 'reservation_show' %>
 <% else %>
   <%= render :partial => 'reservation_form' %>
