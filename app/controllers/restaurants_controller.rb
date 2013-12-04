@@ -33,7 +33,7 @@ class RestaurantsController < ApplicationController
   end
 
   def update
-    params[:restaurant][:category_ids] ||= []
+    params[:restaurant][:user_ids] ||= []
     if @restaurant.update(restaurant_params)
       redirect_to @restaurant
     else

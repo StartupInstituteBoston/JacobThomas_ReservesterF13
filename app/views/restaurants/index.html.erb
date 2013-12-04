@@ -26,7 +26,7 @@
         <%= link_to category.name, category_path(category) %>
         <% end %><br /></td>
         <td>
-          <% if owner_signed_in? && current_owner.id == restaurant.owner_id %>
+          <% if user_signed_in? && current_user.id == restaurant.user_id %>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
                         edit_restaurant_path(restaurant), :class => 'btn btn-mini' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -41,7 +41,7 @@
   </tbody>
 </table>
 
-<% if owner_signed_in? %>
+<% if user_signed_in? %>
   <%= link_to t('.new', :default => t("helpers.links.new")),
               new_restaurant_path,
               :class => 'btn btn-primary' %>

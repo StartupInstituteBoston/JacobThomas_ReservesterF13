@@ -2,7 +2,7 @@ Reservester::Application.routes.draw do
 
   root to: "welcome#index"
 
-  devise_for :owners
+  devise_for :users
   
   resources :categories
   resources :restaurants do 
@@ -10,5 +10,5 @@ Reservester::Application.routes.draw do
   end
 
 
-  get 'dashboard', :controller => 'owners', :action => 'dashboard'
+  get 'dashboard', :controller => 'users', :action => 'dashboard'
 end
