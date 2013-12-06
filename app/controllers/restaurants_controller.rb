@@ -46,6 +46,17 @@ class RestaurantsController < ApplicationController
     redirect_to restaurants_path
   end 
 
+  def star 
+    type = params[:type]
+    if type == "star"
+      current_user.starred_restaurants << @restaurant 
+      redirect_to :back, notice: "You starred #{@restaurant.name}"
+    elsif type == "unstar"
+      current_user.starred_restaurants.delete(@restaurant)
+      redirect_to :back, notice: "You unstarred #{@restaurant}"
+    end
+  end
+
   private 
 
   def restaurant_params

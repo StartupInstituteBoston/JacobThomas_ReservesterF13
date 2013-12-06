@@ -6,8 +6,10 @@ Reservester::Application.routes.draw do
   
   resources :categories
   resources :restaurants do 
+    resources :stars
     resources :reservations 
   end
+
 
 
   get 'dashboard', :controller => 'users', :action => 'dashboard'

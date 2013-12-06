@@ -48,6 +48,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 
 
+
 gem 'unf'
 gem 'fog'
 gem 'rmagick'
